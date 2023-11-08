@@ -72,15 +72,33 @@ namespace SalesSystem.Repository
             var client = await GetClientById(idClient) ??
                 throw new Exception("CLIENT NOT FOUND");
 
+            var product = await _productRepository.GetProductById(idProduct) ??
+                throw new Exception("PRODUCT NOT FOUND");
+               
+
             client.ProductId = idProduct;
             client.ProductQuantity += quantity;
-            client.Product.Quantity -= quantity;
+            product.Quantity -= quantity;
+
+            _dbContext.Clients.Update(client);
+            _dbContext.Products.Update(product);
+            await _dbContext.SaveChangesAsync();
+
+            return client;
+        }
+
+        public async Task<ClientModel> ConfirmBuy(int id)
+        {
+            var client = await GetClientById(id) ??
+                throw new Exception("CLIENT NOT FOUND");
+
+            client.ProductId = null;
+            client.ProductQuantity = 0;
 
             _dbContext.Clients.Update(client);
             await _dbContext.SaveChangesAsync();
 
             return client;
         }
-  
     }
 }

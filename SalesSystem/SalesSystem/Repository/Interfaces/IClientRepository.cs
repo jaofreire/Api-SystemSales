@@ -11,5 +11,6 @@ namespace SalesSystem.Repository.Interfaces
         Task<bool> DeleteClient(int id);
 
         Task<ClientModel> BuyProduct(int idClient, int idProduct, int quantity);
+        Task<ClientModel> ConfirmBuy(int id);
     }
 }

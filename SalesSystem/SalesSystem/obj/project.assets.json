@@ -3349,11 +3349,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\estudo C#\\SalesSystem\\SalesSystem\\SalesSystem.csproj",
+      "projectUniqueName": "E:\\estudo C#\\Api-SystemSales\\SalesSystem\\SalesSystem\\SalesSystem.csproj",
       "projectName": "SalesSystem",
-      "projectPath": "E:\\estudo C#\\SalesSystem\\SalesSystem\\SalesSystem.csproj",
+      "projectPath": "E:\\estudo C#\\Api-SystemSales\\SalesSystem\\SalesSystem\\SalesSystem.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "E:\\estudo C#\\SalesSystem\\SalesSystem\\obj\\",
+      "outputPath": "E:\\estudo C#\\Api-SystemSales\\SalesSystem\\SalesSystem\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",

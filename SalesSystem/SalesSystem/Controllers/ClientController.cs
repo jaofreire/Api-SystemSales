@@ -52,5 +52,11 @@ namespace SalesSystem.Controllers
         {
             return await _clientRepository.BuyProduct(idClient, idProduct, quantity);
         }
+
+        [HttpPatch]
+        public async Task<ActionResult<ClientModel>> Confirm(int id)
+        {
+            return await _clientRepository.ConfirmBuy(id);
+        }
     }
 }
