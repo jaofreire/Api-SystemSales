@@ -15,6 +15,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
+builder.Services.AddScoped<IRequestsFinaledsRespository, RequestsFinaledsRepository>();
 
 builder.Services.AddEntityFrameworkSqlServer().AddDbContext<SystemSaleDbContext>
     (options => options.UseSqlServer(builder.Configuration.GetConnectionString("DataBase")));

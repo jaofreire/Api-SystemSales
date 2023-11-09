@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SalesSystem.Data;
 
@@ -11,9 +12,11 @@ using SalesSystem.Data;
 namespace SalesSystem.Migrations
 {
     [DbContext(typeof(SystemSaleDbContext))]
-    partial class SystemSaleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231109124338_ChangePropertry")]
+    partial class ChangePropertry
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -82,9 +85,6 @@ namespace SalesSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ClientId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -96,13 +96,6 @@ namespace SalesSystem.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("ProductPrice")
-                        .HasColumnType("float");
-
                     b.Property<int>("ProductQuantity")
                         .HasColumnType("int");
 
@@ -110,6 +103,8 @@ namespace SalesSystem.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("RequestsFinaleds");
                 });
@@ -121,6 +116,17 @@ namespace SalesSystem.Migrations
                         .HasForeignKey("ProductId");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("SalesSystem.Model.RequestsFinaledsModel", b =>
+                {
+                    b.HasOne("SalesSystem.Model.ProductModel", "product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("product");
                 });
 #pragma warning restore 612, 618
         }

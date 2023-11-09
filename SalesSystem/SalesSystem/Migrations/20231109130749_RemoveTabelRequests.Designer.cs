@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SalesSystem.Data;
 
@@ -11,9 +12,11 @@ using SalesSystem.Data;
 namespace SalesSystem.Migrations
 {
     [DbContext(typeof(SystemSaleDbContext))]
-    partial class SystemSaleDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231109130749_RemoveTabelRequests")]
+    partial class RemoveTabelRequests
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -72,46 +75,6 @@ namespace SalesSystem.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
-                });
-
-            modelBuilder.Entity("SalesSystem.Model.RequestsFinaledsModel", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ClientId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ProductName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<double>("ProductPrice")
-                        .HasColumnType("float");
-
-                    b.Property<int>("ProductQuantity")
-                        .HasColumnType("int");
-
-                    b.Property<double>("TotalValue")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("RequestsFinaleds");
                 });
 
             modelBuilder.Entity("SalesSystem.Model.ClientModel", b =>
